@@ -4,13 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="AirMonitor.MainPage">
-
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Witam" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-
+             x:Class="AirMonitor.Views.HomePage"
+             NavigationPage.HasNavigationBar="false"
+             Title="Home">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Otwórz"
+                Command="{Binding openDetails}" />
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

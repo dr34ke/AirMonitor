@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:controls="clr-namespace:AirMonitor.Controls"
+             x:Class="AirMonitor.Views.DetailsPage"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <StackLayout Padding="10,10,10,10">
+            <Button Text="?" WidthRequest="20" HeightRequest="20" CornerRadius="20" HorizontalOptions="End" BorderColor="Black"  BorderWidth="1" FontSize="12" BackgroundColor="White" Margin="0,0,0,0" Padding="0,0,0,0"  Command="{Binding details}"/>
+            <Frame BorderColor="Gray" BackgroundColor="Green" CornerRadius="100" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center">
+                <Label
+                     HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                    Text="{Binding CAQI}"
+                                    FontAttributes="Bold"
+                                    TextColor="Black"
+                                    FontSize="32"/>
+                            <Span
+                                    Text="{x:Static x:Environment.NewLine}"/>
+                            <Span
+                                    Text="CAQI"
+                                    FontSize="12"
+                                    TextColor="DarkSlateGray"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Frame>
+            <Label  Text="Świetna jakość!" FontSize="Large" HorizontalOptions="Center"/>
+            <Label  Text="Możesz bezpiecznie wyjść z domu bez swojej maski anty-smogowej i nie bać się o swoje zdrowie." HorizontalOptions="Center"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Frame BackgroundColor="Gray" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Opacity="0.2"/>
+                <Frame BackgroundColor="Gray" Grid.Row="1" Grid.Column="1" Opacity="0.2"/>
+                <StackLayout Grid.Column="0" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
+                    <controls:PMControl Title="PM 2,5">
+                        <controls:PMControl.ControlContent>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                                Text="{Binding pm25}"
+                                                TextColor="Black"
+                                                FontSize="20"/>
+                                        <Span
+                                                Text=" mg/m3 "
+                                                TextColor="Black"
+                                                FontSize="14"/>
+                                        <Span
+                                                Text="{Binding pm25proc, StringFormat='({0}%)'}"
+                                                TextColor="Black"
+                                                FontSize="20"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </controls:PMControl.ControlContent>
+                    </controls:PMControl>
+                </StackLayout>
+                <StackLayout Grid.Column="2" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
+                    <controls:PMControl Title="PM 10">
+                        <controls:PMControl.ControlContent>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                                Text="{Binding pm10}"
+                                                TextColor="Black"
+                                                FontSize="20"/>
+                                        <Span
+                                                Text=" mg/m3 "
+                                                TextColor="Black"
+                                                FontSize="14"/>
+                                        <Span
+                                                Text="{Binding pm10proc, StringFormat='({0}%)'}"
+                                                TextColor="Black"
+                                                FontSize="20"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </controls:PMControl.ControlContent>
+                    </controls:PMControl>
+                </StackLayout>
+                <Frame BackgroundColor="Gray" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Opacity="0.2"/>
+                <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="3" Padding="10,10,10,10">
+                    <Label Text="Wilgotność:"/>
+                    <Label Text="95%"/>
+                    <Slider MaximumTrackColor="Gray" ThumbColor="CornflowerBlue" MinimumTrackColor="Aquamarine"/>
+                </StackLayout>
+                <Frame BackgroundColor="Gray" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Opacity="0.2"/>
+                <StackLayout Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" Padding="10,10,10,10">
+                    <Label Text="Ciśnienie:"/>
+                    <Label Text="1026hPa"/>
+                    <Slider MaximumTrackColor="Gray" ThumbColor="CornflowerBlue" MinimumTrackColor="Aquamarine"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
