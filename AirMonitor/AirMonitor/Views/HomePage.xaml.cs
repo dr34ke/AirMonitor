@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AirMonitor.ViewModels;
+using AirMonitor.Models;
 
 namespace AirMonitor.Views
 {
@@ -18,5 +19,6 @@ namespace AirMonitor.Views
             BindingContext = new HomeVM(Navigation);
             InitializeComponent();
         }
+        
     }
 }

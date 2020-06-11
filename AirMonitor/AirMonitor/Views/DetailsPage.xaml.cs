@@ -13,10 +13,10 @@ namespace AirMonitor.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsPage : ContentPage
     {
-        public DetailsPage()
+        public DetailsPage(string id)
         {
             InitializeComponent();
-            BindingContext = new DetailVM(this);
+            BindingContext = new DetailVM(this, id);
         }
     }
 }

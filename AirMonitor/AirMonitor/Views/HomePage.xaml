@@ -9,8 +9,30 @@
              Title="Home">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Otwórz"
-                Command="{Binding openDetails}" />
+            <ActivityIndicator IsVisible="{Binding isvisible}" IsRunning="True">
+                
+            </ActivityIndicator>
+            <ListView ItemsSource="{Binding installations}" ItemTapped="Display">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="7,7,7,7">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding address.city}" Grid.Column="0" FontSize="20"/>
+                                <Label Text="{Binding address.street}" Grid.Column="1" FontSize="20"/>
+                                <Label Text="{Binding address.number}" Grid.Column="2" FontSize="20"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

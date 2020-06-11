@@ -27,5 +27,6 @@ namespace AirMonitor
         protected override void OnResume()
         {
         }
+
     }
 }
