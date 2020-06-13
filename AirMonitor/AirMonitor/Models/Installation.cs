@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -35,5 +36,19 @@ namespace AirMonitor.Models
         public string logo { get; set; }
         public string link { get; set; }
         public string displayName { get; set; }
+    }
+    class InstallationEntity
+    {
+        public InstallationEntity()
+        {
+
+        }
+        [PrimaryKey]
+        public string id { get; set; }
+        public string location { get; set; }
+        public string address { get; set; }
+        public string elevation { get; set; }
+        public string airly { get; set; }
+        public string sponsor { get; set; }
     }
 }

@@ -9,9 +9,6 @@
              Title="Home">
     <ContentPage.Content>
         <StackLayout>
-            <ActivityIndicator IsVisible="{Binding isvisible}" IsRunning="True">
-                
-            </ActivityIndicator>
             <ListView ItemsSource="{Binding installations}" ItemTapped="Display">
                 <ListView.ItemTemplate>
                     <DataTemplate>

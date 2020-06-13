@@ -68,9 +68,9 @@ namespace AirMonitor.ViewModels
         public void getNearest()
         {
             GetLocation();
-            RestClient client = new RestClient(@"https://airapi.airly.eu/v2/");
+            RestClient client = new RestClient(@Api.url);
             RestRequest request = new RestRequest("/installations/nearest", Method.GET);
-            request.AddHeader("apikey", "hD1o6xM4qU7dVtPTic7n7YHOQSOPKCJq");
+            request.AddHeader("apikey", Api.apiKey);
             request.AddParameter("lat", latitude);
             request.AddParameter("lng", longitude);
             request.AddParameter("maxDistanceKM", "30");
@@ -80,9 +80,9 @@ namespace AirMonitor.ViewModels
         public void getMesurements(string id)
         {
             GetLocation();
-            RestClient client = new RestClient(@"https://airapi.airly.eu/v2/");
+            RestClient client = new RestClient(@Api.url);
             RestRequest request = new RestRequest("/measurements/installation", Method.GET);
-            request.AddHeader("apikey", "hD1o6xM4qU7dVtPTic7n7YHOQSOPKCJq");
+            request.AddHeader("apikey", Api.apiKey);
             request.AddParameter("installationId", id);
             
             request.AddHeader("Accept-Language", "pl");

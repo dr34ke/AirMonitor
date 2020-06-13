@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,7 @@ namespace AirMonitor.Models
 {
     class Mesurements
     {
+        public int id { get; set; }
         public Current current { get; set; }
     }
     public class Current
@@ -39,6 +41,29 @@ namespace AirMonitor.Models
         private string _percent { get; set; }
         public string averaging { get; set; }
     }
+    class MesurementsEntity
+    {
+        public MesurementsEntity()
+        {
 
+        }
+        [PrimaryKey]
+        public int idMesurment { get; set; }
+        public int idInstallation { get; set; }
+    }
+    public class CurrentEntity
+    {
+        public CurrentEntity()
+        {
+
+        }
+        [PrimaryKey, AutoIncrement]
+        public string id { get; set; }
+        public string fromDateTime { get; set; }
+        public string tillDateTime { get; set; }
+        public string values { get; set; }
+        public string indexes { get; set; }
+        public string standards { get; set; }
+    }
 
 }

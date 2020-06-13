@@ -2,6 +2,10 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AirMonitor.Views;
+using AirMonitor.Models;
+using System.Reflection;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace AirMonitor
 {
@@ -10,12 +14,24 @@ namespace AirMonitor
         public App()
         {
             InitializeComponent();
+            var assembly = Assembly.GetExecutingAssembly();
+            var resource = "AirMonitor.Models.config.json";
+            DatabaseHelper databaseHelper = new DatabaseHelper("");
+            Database.sQLiteConnection = databaseHelper.sQLiteConnection;
+            using (Stream stream = assembly.GetManifestResourceStream(resource))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                string result = reader.ReadToEnd();
+                _Api api = JsonConvert.DeserializeObject<_Api>(result);
+                Api.apiKey = api.apiKey;
+                Api.url = api.url;
+            }
             TabbedPage tabbed = new Tabbed();
             tabbed.Children.Add(new HomePage());
             tabbed.Children.Add(new SettingPage());
             MainPage = new NavigationPage(tabbed);
+            
         }
-
         protected override void OnStart()
         {
         }
