@@ -6,6 +6,7 @@ using AirMonitor.Models;
 using System.Reflection;
 using System.IO;
 using Newtonsoft.Json;
+using SQLite;
 
 namespace AirMonitor
 {
@@ -16,8 +17,7 @@ namespace AirMonitor
             InitializeComponent();
             var assembly = Assembly.GetExecutingAssembly();
             var resource = "AirMonitor.Models.config.json";
-            DatabaseHelper databaseHelper = new DatabaseHelper("");
-            Database.sQLiteConnection = databaseHelper.sQLiteConnection;
+            Database.sQLiteConnection = new SQLiteConnection("");
             using (Stream stream = assembly.GetManifestResourceStream(resource))
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -30,7 +30,6 @@ namespace AirMonitor
             tabbed.Children.Add(new HomePage());
             tabbed.Children.Add(new SettingPage());
             MainPage = new NavigationPage(tabbed);
-            
         }
         protected override void OnStart()
         {

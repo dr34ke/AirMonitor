@@ -15,9 +15,5 @@ namespace AirMonitor.Models
         public static string apiKey { get; set; }
         public static string url { get; set; }
     }
-    public static class Database
-    {
-        public static SQLiteConnection sQLiteConnection { get; set; }
-    }
 }
 

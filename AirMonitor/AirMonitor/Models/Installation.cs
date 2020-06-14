@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using Newtonsoft.Json;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,12 +40,16 @@ namespace AirMonitor.Models
     }
     class InstallationEntity
     {
-        public InstallationEntity()
+        public InstallationEntity(Installation installation)
         {
-
+            this.location = JsonConvert.SerializeObject(installation.location);
+            this.address = JsonConvert.SerializeObject(installation);
+            this.elevation = JsonConvert.SerializeObject(installation);
+            this.airly = installation.airly;
+            this.sponsor = JsonConvert.SerializeObject(installation);
         }
-        [PrimaryKey]
-        public string id { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int id { get; set; }
         public string location { get; set; }
         public string address { get; set; }
         public string elevation { get; set; }

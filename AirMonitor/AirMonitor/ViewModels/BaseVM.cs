@@ -76,18 +76,24 @@ namespace AirMonitor.ViewModels
             request.AddParameter("maxDistanceKM", "30");
             var response = client.Execute(request);
             this.installations = JsonConvert.DeserializeObject<ObservableCollection<Installation>>(response.Content);
+            InsertInstallations(this.installations);
+        }
+        public void InsertInstallations(ObservableCollection<Installation> installations)
+        {
+            foreach(Installation installation in installations)
+            {
+                Database.Insert<InstallationEntity>(new InstallationEntity(installation));
+            }
         }
         public void getMesurements(string id)
         {
             GetLocation();
-            RestClient client = new RestClient(@Api.url);
-            RestRequest request = new RestRequest("/measurements/installation", Method.GET);
-            request.AddHeader("apikey", Api.apiKey);
-            request.AddParameter("installationId", id);
-            
-            request.AddHeader("Accept-Language", "pl");
-            var response = client.Execute(request);
-            this.mesurements = JsonConvert.DeserializeObject<Mesurements> (response.Content);
+            this.mesurements = new Mesurements(id);
         }
+        public void InsertMesurements(Mesurements mesurements, string idInstallation)
+        {
+            Database.Insert<MesurementsEntity>(new MesurementsEntity(mesurements, idInstallation));
+        }
+        
     }
 }
