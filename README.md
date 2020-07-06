@@ -1,6 +1,6 @@
 # AIRMonitor
-Aplikacja w technologii XAMARIN umożliwiająca sprawdzanie czystości powietrza w najbliższej stacji badawczej. 
-Oparta o otware API Airly
+Aplikacja w technologii __XAMARIN__ umożliwiająca sprawdzanie czystości powietrza w najbliższej stacji badawczej. 
+Oparta o otware __API Airly__.
 
 
 ![SCR1](/a1.png)
