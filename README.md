@@ -4,4 +4,4 @@ Oparta o otware API Airly
 
 
 ![SCR1](/a1.png)
-![SCR2](/aw.png)
+![SCR2](/a2.png)
